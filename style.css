@@ -377,6 +377,9 @@ p {
 }
 
 .nav-mobile a.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--c-off-white);
 }
 
