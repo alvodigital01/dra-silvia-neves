@@ -1240,25 +1240,7 @@ p {
 .contato-icon,
 .depo-aspas {
   display: inline-block;
-  animation: gold-gentle-rotate 10s linear infinite;
   transform-origin: center;
-}
-
-.dif-icon {
-  animation-duration: 12s;
-}
-
-.contato-icon {
-  animation-duration: 9s;
-}
-
-.depo-aspas {
-  animation-duration: 11s;
-}
-
-@keyframes gold-gentle-rotate {
-  from { rotate: 0deg; }
-  to   { rotate: 360deg; }
 }
 
 @keyframes btn-soft-pulse {
