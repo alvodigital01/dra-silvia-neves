@@ -387,7 +387,7 @@ p {
 /* ── 7. HERO ──────────────────────────────────────────────── */
 .section-hero {
   background-color: var(--c-off-white);
-  padding: calc(var(--header-h) + var(--section-py)) 0 var(--section-py);
+  padding: calc(var(--header-h) + 48px) 0 var(--section-py);
 }
 
 .hero-inner {
@@ -422,7 +422,8 @@ p {
 .hero-img-placeholder {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3.55;
+  max-height: 500px;
   height: auto;
   background-color: var(--c-rose);
   border-radius: 4px 80px 4px 80px;
@@ -449,7 +450,8 @@ p {
 .sobre-img-placeholder {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3.55;
+  max-height: 500px;
   height: auto;
   background-color: var(--c-rose);
   border-radius: 4px 60px 4px 60px;
@@ -501,68 +503,109 @@ p {
   padding: var(--section-py) 0;
 }
 
+.section-procedimentos .section-header h2 {
+  font-size: clamp(32px, 4.2vw, 48px);
+}
+
 .procedimentos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  align-items: stretch;
 }
 
 .proc-card {
   background-color: var(--c-off-white);
   border-radius: var(--radius-card);
-  padding: 36px 28px 32px;
+  padding: 44px 30px 34px;
   border: 1px solid var(--c-border);
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.proc-card::after {
+  content: attr(data-index);
+  position: absolute;
+  top: 24px;
+  right: 26px;
+  font-family: var(--font-display);
+  font-size: 42px;
+  line-height: 1;
+  color: rgba(168, 137, 92, 0.22);
+  pointer-events: none;
 }
 
 .proc-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-}
-
-.proc-icon {
-  font-size: 22px;
-  color: var(--c-dourado);
-  margin-bottom: 18px;
-  line-height: 1;
+  transform: translateY(-7px);
+  border-color: rgba(168, 137, 92, 0.48);
+  box-shadow: 0 16px 44px rgba(60, 30, 30, 0.16);
 }
 
 .proc-card h3 {
-  margin-bottom: 10px;
-  font-size: 17px;
+  margin-bottom: 14px;
+  padding-right: 54px;
+  font-family: var(--font-display);
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1.18;
 }
 
 .proc-card p {
   color: var(--c-text-soft);
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.8;
   flex: 1;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
 }
 
 .proc-link {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
-  color: var(--c-bordo);
+  color: var(--c-bordo-dark);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   align-self: flex-start;
-  transition: color 0.2s ease;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.25s ease;
+}
+
+.proc-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--c-dourado);
+  transform: scaleX(0.35);
+  transform-origin: left;
+  transition: transform 0.28s ease, background-color 0.28s ease;
 }
 
 .proc-link:hover {
   color: var(--c-dourado);
 }
 
+.proc-link:hover::after {
+  transform: scaleX(1);
+  background-color: var(--c-bordo);
+}
+
 
 /* ── 10. DIFERENCIAIS ─────────────────────────────────────── */
 .section-diferenciais {
   background-color: var(--c-off-white);
-  padding: var(--section-py) 0;
+  padding: calc(var(--section-py) + 12px) 0;
+}
+
+.section-diferenciais .section-header {
+  margin-bottom: 64px;
 }
 
 .diferenciais-grid {
@@ -573,35 +616,63 @@ p {
 
 .diferencial-item {
   text-align: center;
-  padding: 36px 20px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-card);
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.diferencial-item:hover {
-  border-color: var(--c-border);
-  background-color: var(--c-nude);
+  padding: 8px 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dif-icon {
-  font-size: 26px;
+  display: inline-block;
+  font-size: 28px;
   color: var(--c-dourado);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   line-height: 1;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .diferencial-item h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
+  display: block;
+  font-size: 17px;
+  color: var(--c-bordo);
+  margin-bottom: 16px;
   text-align: center;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.diferencial-item h3::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 42px;
+  height: 1px;
+  background-color: var(--c-dourado);
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.28s ease;
+}
+
+.diferencial-item:hover .dif-icon {
+  transform: scale(1.12);
+  color: var(--c-dourado-soft);
+}
+
+.diferencial-item:hover h3 {
+  color: var(--c-bordo-dark);
+}
+
+.diferencial-item:hover h3::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 .diferencial-item p {
   font-size: 14px;
   color: var(--c-text-soft);
   text-align: center;
-  line-height: 1.7;
+  line-height: 1.78;
 }
 
 
@@ -673,39 +744,68 @@ p {
   background-color: var(--c-off-white);
   border: 1px solid var(--c-border);
   border-radius: var(--radius-card);
-  padding: 40px 36px 36px;
+  padding: 46px 40px 40px;
   /* largura calculada e injetada pelo JS via data-card-width */
   flex-shrink: 0;
   box-shadow: var(--shadow-card);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.depo-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168, 137, 92, 0.45);
+  box-shadow: 0 14px 38px rgba(60, 30, 30, 0.14);
 }
 
 .depo-aspas {
   font-family: var(--font-display);
-  font-size: 72px;
+  font-size: 58px;
   color: var(--c-dourado);
-  line-height: 0.7;
-  margin-bottom: 20px;
-  opacity: 0.55;
+  line-height: 0.8;
+  margin-bottom: 24px;
+  opacity: 0.62;
 }
 
 .depo-card blockquote p {
   font-style: italic;
-  font-size: 15px;
+  font-size: 15.5px;
   color: var(--c-cafe);
-  line-height: 1.85;
-  margin-bottom: 28px;
+  line-height: 1.9;
+  margin-bottom: 32px;
 }
 
 .depo-card blockquote footer {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 14px;
 }
 
 .depo-stars {
   color: var(--c-dourado);
   font-size: 13px;
   letter-spacing: 2px;
+}
+
+.depo-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.depo-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(168, 137, 92, 0.18);
+  border: 1px solid rgba(168, 137, 92, 0.35);
+  color: var(--c-bordo);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 .depo-card cite {
@@ -783,9 +883,9 @@ p {
 
 .contato-mapa {
   height: 480px;
-  border-radius: var(--radius-card);
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid var(--c-border);
+  border: 0;
   box-shadow: var(--shadow-card);
 }
 
@@ -793,32 +893,51 @@ p {
   width: 100%;
   height: 100%;
   border: 0;
+  border-radius: 12px;
   display: block;
 }
 
 .contato-info h2 {
   margin-bottom: 0;
+  font-size: clamp(30px, 3.6vw, 46px);
 }
 
 .contato-lista {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 0;
   margin-bottom: 36px;
   margin-top: 4px;
 }
 
 .contato-lista li {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(168, 137, 92, 0.22);
+}
+
+.contato-lista li:first-child {
+  padding-top: 0;
+}
+
+.contato-lista li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 
 .contato-icon {
   color: var(--c-dourado);
-  font-size: 13px;
+  font-size: 15px;
   margin-top: 5px;
   flex-shrink: 0;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.contato-lista li:hover .contato-icon {
+  transform: scale(1.1);
+  color: var(--c-dourado-soft);
 }
 
 .contato-lista strong {
@@ -841,17 +960,31 @@ p {
 .contato-lista a {
   color: var(--c-bordo);
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color 0.25s ease;
 }
 
 .contato-lista a:hover {
   color: var(--c-dourado);
 }
 
+.contato-info .btn-primary {
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+}
+
+.contato-info .btn-primary:hover {
+  background-color: var(--c-bordo);
+  border-color: var(--c-bordo);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-icon {
+  flex-shrink: 0;
+}
+
 
 /* ── 14. FOOTER ───────────────────────────────────────────── */
 #footer {
-  background-color: var(--c-grafite);
+  background-color: #3E1D1D;
   color: var(--c-rose-soft);
 }
 
@@ -1071,6 +1204,8 @@ button:focus-visible {
 
   .hero-img-placeholder {
     aspect-ratio: 4 / 3;
+    height: auto;
+    max-height: none;
     border-radius: 4px 40px 4px 40px;
   }
 
@@ -1088,6 +1223,7 @@ button:focus-visible {
 
   .sobre-img-placeholder {
     aspect-ratio: 4 / 3;
+    max-height: none;
     border-radius: 4px 40px 4px 40px;
   }
 
@@ -1095,26 +1231,34 @@ button:focus-visible {
   .section-procedimentos { padding: var(--section-py-mob) 0; }
   .procedimentos-grid { grid-template-columns: 1fr; }
 
+  .proc-card {
+    grid-column: auto;
+    min-height: auto;
+    padding: 38px 24px 30px;
+  }
+
+  .proc-card h3 {
+    font-size: 24px;
+  }
+
   /* Diferenciais */
   .section-diferenciais { padding: var(--section-py-mob) 0; }
 
   .diferenciais-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 30px;
   }
 
   .diferencial-item {
     text-align: left;
-    padding: 24px 20px;
-    border: 1px solid var(--c-border);
-    border-radius: var(--radius-card);
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .diferencial-item:hover {
-    background-color: transparent;
+  .dif-icon {
+    margin-bottom: 18px;
   }
 
   .diferencial-item h3,
@@ -1134,7 +1278,7 @@ button:focus-visible {
   .section-depoimentos { padding: var(--section-py-mob) 0; }
 
   .depo-card {
-    padding: 28px 24px;
+    padding: 34px 26px 30px;
   }
 
   .carousel-track { gap: 16px; }
