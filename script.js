@@ -87,9 +87,48 @@
 
 
   /* ── 5. INTERSECTION OBSERVER — FADE-IN ──────────────────── */
-  var fadeElements = document.querySelectorAll('.fade-up');
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if ('IntersectionObserver' in window) {
+  function setReveal(el, type, delay) {
+    if (!el) return;
+    el.classList.add('reveal');
+    if (type) el.classList.add(type);
+    if (delay) el.style.setProperty('--reveal-delay', delay + 's');
+  }
+
+  function setRevealGroup(selector, type, baseDelay, step) {
+    document.querySelectorAll(selector).forEach(function (el, i) {
+      setReveal(el, type, baseDelay + (i * step));
+    });
+  }
+
+  function prepareRevealAnimations() {
+    setRevealGroup('.section-header', '', 0, 0);
+    setRevealGroup('.section-divider', 'reveal-line', 0.12, 0);
+    setRevealGroup('.proc-card', '', 0, 0.1);
+    setRevealGroup('.diferencial-item', '', 0, 0.1);
+    setRevealGroup('.dif-icon, .selo-icon, .contato-icon', 'reveal-scale', 0.08, 0.04);
+    setReveal(document.querySelector('.sobre-image'), 'reveal-photo', 0);
+    setRevealGroup('.resultado-item', '', 0, 0.1);
+    setRevealGroup('.depo-card', '', 0, 0.1);
+    setRevealGroup('.contato-lista li', 'reveal-left', 0, 0.1);
+    setReveal(document.querySelector('.contato-mapa'), '', 0);
+    setReveal(document.querySelector('.contato-info'), '', 0.12);
+
+    setReveal(document.querySelector('.hero-content .eyebrow'), '', 0.05);
+    setReveal(document.querySelector('.hero-content h1'), '', 0.17);
+    setReveal(document.querySelector('.hero-text'), '', 0.29);
+    setReveal(document.querySelector('.hero-btns'), '', 0.43);
+    setReveal(document.querySelector('.hero-image'), 'reveal-photo', 0.25);
+  }
+
+  prepareRevealAnimations();
+
+  var fadeElements = document.querySelectorAll('.fade-up, .reveal');
+
+  if (prefersReducedMotion) {
+    fadeElements.forEach(function (el) { el.classList.add('is-visible'); });
+  } else if ('IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
