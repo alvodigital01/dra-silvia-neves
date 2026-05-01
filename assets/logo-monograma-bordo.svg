@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-110 -90 220 180" width="440" height="360">
+  <g fill="none" stroke="#5C2E2E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M -40,-50 C -65,-58 -90,-45 -90,-22 C -90,0 -65,8 -45,12 C -20,18 5,25 5,48 C 5,68 -25,75 -52,68"/>
+    <path d="M 12,55 L 12,-55"/>
+    <path d="M 12,-55 L 70,55"/>
+    <path d="M 70,-55 L 70,55"/>
+    <path d="M 70,-55 C 82,-62 92,-55 94,-42"/>
+  </g>
+</svg>

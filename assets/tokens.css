@@ -1,0 +1,196 @@
+/* ==================================================================
+   ROSÉ ATELIER — Design Tokens
+   Identidade visual de Dra. Silvia Neves Estética Avançada
+   ==================================================================
+   Importe este arquivo no topo do seu CSS principal:
+   @import url("./tokens.css");
+   ================================================================== */
+
+/* Fontes — adicione no <head> do HTML:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+*/
+
+:root {
+  /* ============ CORES ============ */
+
+  /* Primárias */
+  --c-bordo:        #5C2E2E;   /* autoridade, CTAs, títulos importantes */
+  --c-bordo-dark:   #4A2424;   /* hover de bordô */
+  --c-cafe:         #3D2A20;   /* texto principal */
+  --c-grafite:      #2A1F1A;   /* headlines, ênfase máxima */
+
+  /* Acento — usar com parcimônia */
+  --c-dourado:      #A8895C;   /* linhas, detalhes, ícones */
+  --c-dourado-soft: #C2A77E;   /* hover de dourado */
+
+  /* Secundárias claras */
+  --c-rose:         #E8D5C8;   /* primária rosé, backgrounds */
+  --c-rose-soft:    #D9C9BC;   /* hover, detalhes */
+  --c-nude:         #F4ECE4;   /* fundo de seção */
+  --c-off-white:    #FAF6F1;   /* fundo principal */
+
+  /* Funcionais */
+  --c-text:         var(--c-cafe);
+  --c-text-soft:    #6B5447;
+  --c-bg:           var(--c-off-white);
+  --c-bg-alt:       var(--c-nude);
+  --c-border:       rgba(168, 137, 92, 0.25);
+
+  /* WhatsApp (cor própria, não da marca, mas necessária) */
+  --c-whatsapp:     #25D366;
+  --c-whatsapp-dk:  #1FAD52;
+
+  /* ============ TIPOGRAFIA ============ */
+  --f-display:      'Italiana', 'Playfair Display', 'Cormorant Garamond', serif;
+  --f-body:         'Lora', Georgia, 'Times New Roman', serif;
+
+  /* Escala tipográfica */
+  --t-h1:           clamp(2.5rem, 5vw, 4rem);      /* hero */
+  --t-h2:           clamp(2rem, 4vw, 3rem);        /* seções */
+  --t-h3:           clamp(1.25rem, 2vw, 1.5rem);   /* subtítulos */
+  --t-body:         1rem;                          /* 16px */
+  --t-body-lg:      1.125rem;                      /* 18px */
+  --t-small:        0.875rem;                      /* 14px */
+  --t-tiny:         0.75rem;                       /* 12px */
+
+  /* Pesos */
+  --w-regular:      400;
+  --w-medium:       500;
+  --w-bold:         700;
+
+  /* Entrelinha */
+  --lh-tight:       1.15;
+  --lh-display:     1.2;
+  --lh-body:        1.65;
+  --lh-loose:       1.85;
+
+  /* ============ ESPAÇAMENTO ============ */
+  --s-1:  0.25rem;   /*  4px */
+  --s-2:  0.5rem;    /*  8px */
+  --s-3:  0.75rem;   /* 12px */
+  --s-4:  1rem;      /* 16px */
+  --s-5:  1.5rem;    /* 24px */
+  --s-6:  2rem;      /* 32px */
+  --s-7:  3rem;      /* 48px */
+  --s-8:  4rem;      /* 64px */
+  --s-9:  6rem;      /* 96px */
+  --s-10: 8rem;      /* 128px */
+
+  /* ============ LAYOUT ============ */
+  --container:      1200px;
+  --container-sm:   720px;
+
+  /* ============ BORDAS ============ */
+  --radius-sm:      4px;
+  --radius-md:      8px;
+  --radius-lg:      16px;
+  --radius-full:    9999px;
+
+  /* ============ SOMBRAS — sutis, nunca dramáticas ============ */
+  --shadow-soft:    0 2px 12px rgba(60, 30, 30, 0.06);
+  --shadow-card:    0 4px 24px rgba(60, 30, 30, 0.08);
+  --shadow-hover:   0 8px 32px rgba(60, 30, 30, 0.12);
+
+  /* ============ TRANSIÇÕES ============ */
+  --ease:           cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast:         0.2s var(--ease);
+  --t-base:         0.35s var(--ease);
+  --t-slow:         0.6s var(--ease);
+}
+
+/* ============ RESETS BÁSICOS ============ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--f-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--c-text);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============ TIPOGRAFIA UTILITÁRIA ============ */
+h1, h2, h3, .display {
+  font-family: var(--f-display);
+  font-weight: var(--w-regular);
+  line-height: var(--lh-display);
+  color: var(--c-grafite);
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--t-h1); }
+h2 { font-size: var(--t-h2); }
+h3 { font-family: var(--f-body); font-size: var(--t-h3); font-weight: var(--w-bold); }
+
+.tagline {
+  font-style: italic;
+  color: var(--c-bordo);
+  letter-spacing: 0.02em;
+}
+
+.eyebrow {
+  font-size: var(--t-tiny);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--c-dourado);
+  font-weight: var(--w-medium);
+}
+
+/* ============ BOTÕES ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  padding: 0.95rem 2rem;
+  font-family: var(--f-body);
+  font-size: 0.95rem;
+  font-weight: var(--w-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--t-base);
+  border-radius: var(--radius-sm);
+}
+
+.btn-primary {
+  background: var(--c-bordo);
+  color: var(--c-off-white);
+}
+.btn-primary:hover {
+  background: var(--c-bordo-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-whatsapp {
+  background: var(--c-whatsapp);
+  color: white;
+}
+.btn-whatsapp:hover {
+  background: var(--c-whatsapp-dk);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--c-bordo);
+  border: 1px solid var(--c-bordo);
+}
+.btn-ghost:hover { background: var(--c-bordo); color: var(--c-off-white); }
+
+/* ============ DETALHES DECORATIVOS ============ */
+.divider-gold {
+  width: 60px; height: 1px;
+  background: var(--c-dourado);
+  margin: var(--s-5) auto;
+}
+
+.section { padding: var(--s-9) var(--s-5); }
+.container { max-width: var(--container); margin: 0 auto; }
