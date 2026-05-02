@@ -20,8 +20,8 @@
   --c-text:         #3D2A20;
   --c-text-soft:    #6B5447;
   --c-border:       rgba(168, 137, 92, 0.25);
-  --c-whatsapp:     #25D366;
-  --c-whatsapp-dk:  #1FAD52;
+  --c-whatsapp:     #1FAD52;
+  --c-whatsapp-dk:  #168A3F;
 
   /* Tipografia */
   --font-display: 'Cormorant Garamond', serif;
@@ -399,6 +399,14 @@ p {
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   align-items: center;
+}
+
+.hero-inner > *,
+.sobre-inner > *,
+.contato-inner > *,
+.section-header,
+.hero-content {
+  min-width: 0;
 }
 
 .hero-content {
@@ -1125,7 +1133,7 @@ p {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(260px, 1.25fr) minmax(260px, 1fr) minmax(240px, 0.9fr);
+  grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr);
   gap: clamp(48px, 7vw, 96px);
   padding: 76px 24px 58px;
   max-width: var(--container);
@@ -1170,15 +1178,13 @@ p {
   letter-spacing: 0.2em;
 }
 
-.footer-contato-col ul,
-.footer-social ul {
+.footer-contato-col ul {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.footer-contato-col li,
-.footer-social li {
+.footer-contato-col li {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -1197,43 +1203,13 @@ p {
   margin-top: 3px;
 }
 
-.footer-contato-col a,
-.footer-social a {
+.footer-contato-col a {
   color: #f5ede6;
   transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 }
 
-.footer-contato-col a:hover,
-.footer-social a:hover {
+.footer-contato-col a:hover {
   color: #f0d8aa;
-}
-
-.footer-social li {
-  opacity: 1;
-}
-
-.footer-social-link {
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 15px;
-  border: 1px solid rgba(226, 196, 145, 0.32);
-  border-radius: var(--radius-btn);
-  background-color: rgba(245, 237, 230, 0.035);
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.footer-social-link:hover {
-  border-color: rgba(226, 196, 145, 0.78);
-  background-color: rgba(226, 196, 145, 0.1);
-  box-shadow: 0 0 18px rgba(226, 196, 145, 0.1);
-  transform: translateY(-2px);
-}
-
-.footer-social-link .footer-icon {
-  margin-top: 0;
 }
 
 .footer-bottom {
@@ -1420,6 +1396,45 @@ button:focus-visible {
 
 /* ── Mobile (≤768px) ──────────────────────────────────────── */
 @media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero-img-placeholder,
+  .sobre-img-placeholder,
+  .proc-card,
+  .diferencial-item,
+  .resultado-item,
+  .depo-card,
+  .contato-mapa {
+    width: 100%;
+    max-width: calc(100vw - 40px);
+  }
+
+  .hero-content,
+  .hero-content h1,
+  .hero-text,
+  .section-header,
+  .section-header h2,
+  .section-header .eyebrow,
+  .contato-info,
+  .contato-info h2,
+  .contato-lista,
+  .resultados-disclaimer {
+    max-width: calc(100vw - 40px);
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  a,
+  li {
+    overflow-wrap: break-word;
+  }
 
   /* Header */
   .nav-desktop,
@@ -1455,6 +1470,46 @@ button:focus-visible {
 
   .hero-btns {
     flex-direction: column;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .hero-btns .btn {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-content .eyebrow {
+    gap: 10px;
+    letter-spacing: 0.18em;
+    max-width: 100%;
+  }
+
+  .hero-content .eyebrow::before,
+  .hero-content .eyebrow::after {
+    width: 24px;
+    flex: 0 0 24px;
+  }
+
+  .hero-content h1 {
+    max-width: 100%;
+    font-size: clamp(28px, 6.5vw, 34px);
+  }
+
+  .hero-text {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .section-header h2,
+  .contato-info h2 {
+    font-size: clamp(26px, 7vw, 34px);
   }
 
   /* Sobre */
@@ -1537,7 +1592,7 @@ button:focus-visible {
   .section-resultados { padding: var(--section-py-mob) 0; }
 
   .resultados-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 14px;
   }
 
@@ -1586,7 +1641,27 @@ button:focus-visible {
 @media (max-width: 375px) {
   .container { padding: 0 16px; }
 
-  h1 { font-size: 30px; }
+  .hero-img-placeholder,
+  .sobre-img-placeholder,
+  .proc-card,
+  .diferencial-item,
+  .resultado-item,
+  .depo-card,
+  .contato-mapa,
+  .hero-content,
+  .hero-content h1,
+  .hero-text,
+  .section-header,
+  .section-header h2,
+  .section-header .eyebrow,
+  .contato-info,
+  .contato-info h2,
+  .contato-lista,
+  .resultados-disclaimer {
+    max-width: calc(100vw - 32px);
+  }
+
+  h1 { font-size: 27px; }
   h2 { font-size: 24px; }
 
   .resultados-grid {
@@ -1595,5 +1670,17 @@ button:focus-visible {
 
   .hero-btns .btn {
     width: 100%;
+  }
+
+  .hero-content .eyebrow {
+    gap: 8px;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+  }
+
+  .hero-content .eyebrow::before,
+  .hero-content .eyebrow::after {
+    width: 20px;
+    flex-basis: 20px;
   }
 }
