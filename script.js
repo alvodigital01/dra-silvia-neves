@@ -163,15 +163,23 @@
   var INTERVAL_MS   = 6000;
 
   function isMobile() {
-    return window.innerWidth <= 768;
+    return window.innerWidth <= 640;
+  }
+
+  function isTablet() {
+    return window.innerWidth <= 1024;
   }
 
   function getGap() {
-    return isMobile() ? 16 : 24;
+    if (isMobile()) return 16;
+    if (isTablet()) return 20;
+    return 24;
   }
 
   function getVisibleCount() {
-    return isMobile() ? 1 : 3;
+    if (isMobile()) return 1;
+    if (isTablet()) return 2;
+    return 3;
   }
 
   function getMaxIndex() {

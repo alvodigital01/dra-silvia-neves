@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"d:\\\\ESTUDOS\\\\dra-silvia-neves\" -Recurse | Where-Object { $_.Extension -match \"\\\\.\\(png|jpg|jpeg|webp\\)\" } | ForEach-Object { \"$\\($_.Name\\) - $\\([math]::Round\\($_.Length/1KB,1\\)\\) KB\" })"
+    ]
+  }
+}

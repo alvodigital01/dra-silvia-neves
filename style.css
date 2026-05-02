@@ -1396,6 +1396,23 @@ button:focus-visible {
   .hero-inner {
     gap: 40px;
   }
+
+  .section-depoimentos .section-header {
+    margin-bottom: 44px;
+  }
+
+  .carousel-track {
+    gap: 20px;
+  }
+
+  .depo-card {
+    padding: 42px 34px 36px;
+  }
+
+  .depo-card blockquote p {
+    font-size: 15px;
+    line-height: 1.85;
+  }
 }
 
 /* ── Mobile (≤768px) ──────────────────────────────────────── */
