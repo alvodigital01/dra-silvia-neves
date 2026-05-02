@@ -24,7 +24,7 @@
   --c-whatsapp-dk:  #1FAD52;
 
   /* Tipografia */
-  --font-display: 'Italiana', serif;
+  --font-display: 'Cormorant Garamond', serif;
   --font-body:    'Lora', serif;
 
   /* Sombras */
@@ -402,18 +402,41 @@ p {
 }
 
 .hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   max-width: 560px;
 }
 
+.hero-content .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  letter-spacing: 0.22em;
+  color: var(--c-dourado);
+}
+
+.hero-content .eyebrow::before,
+.hero-content .eyebrow::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background-color: var(--c-dourado);
+  opacity: 0.82;
+}
+
 .hero-content h1 {
-  margin-bottom: 20px;
-  letter-spacing: -0.01em;
+  max-width: 540px;
+  margin-bottom: 18px;
+  font-size: clamp(32px, 3.7vw, 44px);
+  letter-spacing: 0;
 }
 
 .hero-text {
   font-size: 17px;
   color: var(--c-text-soft);
-  margin-bottom: 40px;
+  margin-bottom: 26px;
   line-height: 1.8;
 }
 
@@ -421,6 +444,29 @@ p {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.hero-btns .btn {
+  flex: 0 0 244px;
+  min-width: 244px;
+  padding-left: 20px;
+  padding-right: 20px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.hero-btns .btn-ghost {
+  border-width: 1.5px;
+  border-color: var(--c-bordo);
+}
+
+.hero-btns .btn-ghost:hover {
+  background-color: var(--c-bordo);
+  color: var(--c-off-white);
 }
 
 .hero-img-placeholder {
@@ -476,34 +522,74 @@ p {
 }
 
 .selos {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 36px;
-  padding-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 42px;
+  padding-top: 38px;
   border-top: 1px solid var(--c-border);
 }
 
 .selo {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--c-cafe);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 22px;
+  min-height: 78px;
+  border-right: 1px solid rgba(61, 42, 32, 0.18);
 }
 
-.selo-icon {
+.selo:first-child {
+  padding-left: 0;
+}
+
+.selo:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.selo-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: clamp(30px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1;
   color: var(--c-dourado);
-  font-size: 11px;
-  flex-shrink: 0;
+}
+
+.selo-value-rating {
+  gap: 10px;
+}
+
+.selo-stars {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.selo-stars svg {
+  width: 11px;
+  height: 11px;
+  color: var(--c-dourado);
+  fill: currentColor;
+}
+
+.selo-label {
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--c-text-soft);
 }
 
 
 /* ── 9. PROCEDIMENTOS ─────────────────────────────────────── */
 .section-procedimentos {
-  background-color: var(--c-rose);
+  background-color: var(--c-off-white);
   padding: var(--section-py) 0;
 }
 
@@ -536,8 +622,9 @@ p {
   position: absolute;
   top: 24px;
   right: 26px;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 42px;
+  font-weight: 700;
   line-height: 1;
   color: rgba(168, 137, 92, 0.22);
   pointer-events: none;
@@ -604,7 +691,7 @@ p {
 
 /* ── 10. DIFERENCIAIS ─────────────────────────────────────── */
 .section-diferenciais {
-  background-color: var(--c-off-white);
+  background-color: var(--c-nude);
   padding: calc(var(--section-py) + 12px) 0;
 }
 
@@ -629,17 +716,19 @@ p {
 
 .dif-icon {
   display: inline-block;
-  font-size: 28px;
+  width: 34px;
+  height: 34px;
   color: var(--c-dourado);
   margin-bottom: 24px;
-  line-height: 1;
+  stroke: currentColor;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .diferencial-item h3 {
   display: block;
   font-size: 17px;
-  color: var(--c-bordo);
+  font-weight: 500;
+  color: #9C7A4A;
   margin-bottom: 16px;
   text-align: center;
   position: relative;
@@ -665,7 +754,7 @@ p {
 }
 
 .diferencial-item:hover h3 {
-  color: var(--c-bordo-dark);
+  color: var(--c-dourado);
 }
 
 .diferencial-item:hover h3::after {
@@ -682,7 +771,7 @@ p {
 
 /* ── 11. RESULTADOS ───────────────────────────────────────── */
 .section-resultados {
-  background-color: var(--c-nude);
+  background-color: var(--c-off-white);
   padding: var(--section-py) 0;
 }
 
@@ -703,14 +792,13 @@ p {
 .resultado-img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
-  height: auto;
+  height: 380px;
   background-color: var(--c-rose);
   border-radius: var(--radius-card);
   border: 1px solid var(--c-border);
   object-fit: cover;
   object-position: center;
-  transition: transform 0.45s var(--ease-elegant);
+  transition: transform 0.4s ease;
 }
 
 .resultado-item:hover .resultado-img {
@@ -718,17 +806,18 @@ p {
 }
 
 .resultado-caption {
-  font-size: 12px;
-  color: var(--c-text-soft);
+  font-size: 13px;
+  color: #6B5447;
   font-style: italic;
   text-align: center;
   letter-spacing: 0.02em;
 }
 
 .resultados-disclaimer {
+  margin-top: 42px;
   text-align: center;
-  font-size: 13px;
-  color: var(--c-text-soft);
+  font-size: 17px;
+  color: #9C7A4A;
 }
 
 
@@ -745,6 +834,7 @@ p {
 
 .carousel-track {
   display: flex;
+  align-items: stretch;
   gap: 24px;
   transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
@@ -756,6 +846,10 @@ p {
   border-radius: var(--radius-card);
   padding: 46px 40px 40px;
   /* largura calculada e injetada pelo JS via data-card-width */
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  height: auto;
   flex-shrink: 0;
   box-shadow: var(--shadow-card);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
@@ -772,7 +866,7 @@ p {
   font-size: 58px;
   color: var(--c-dourado);
   line-height: 0.8;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   opacity: 0.62;
 }
 
@@ -784,10 +878,17 @@ p {
   margin-bottom: 32px;
 }
 
+.depo-card blockquote {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 .depo-card blockquote footer {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  margin-top: auto;
 }
 
 .depo-stars {
@@ -809,9 +910,9 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(168, 137, 92, 0.18);
+  background-color: #e8d5c4;
   border: 1px solid rgba(168, 137, 92, 0.35);
-  color: var(--c-bordo);
+  color: var(--c-cafe);
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 700;
@@ -938,9 +1039,10 @@ p {
 }
 
 .contato-icon {
+  width: 20px;
+  height: 20px;
   color: var(--c-dourado);
-  font-size: 15px;
-  margin-top: 5px;
+  margin-top: 4px;
   flex-shrink: 0;
   transition: transform 0.25s ease, color 0.25s ease;
 }
@@ -996,7 +1098,7 @@ p {
 #footer {
   position: relative;
   overflow: hidden;
-  background-color: #2e2420;
+  background-color: var(--c-bordo);
   color: #f5ede6;
 }
 
@@ -1008,7 +1110,7 @@ p {
   opacity: 0.16;
   background-image:
     radial-gradient(circle at 18% 22%, rgba(245, 237, 230, 0.18) 0 1px, transparent 1.2px),
-    radial-gradient(circle at 74% 68%, rgba(168, 137, 92, 0.16) 0 1px, transparent 1.3px);
+    radial-gradient(circle at 74% 68%, rgba(168, 137, 92, 0.14) 0 1px, transparent 1.3px);
   background-size: 18px 18px, 26px 26px;
 }
 
@@ -1016,7 +1118,7 @@ p {
   position: relative;
   z-index: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(168, 137, 92, 0.55) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(226, 196, 145, 0.78) 50%, transparent 100%);
 }
 
 .footer-inner {
@@ -1048,13 +1150,14 @@ p {
   width: 72px;
   height: 1px;
   margin-bottom: 18px;
-  background-color: var(--c-dourado);
+  background-color: #e2c491;
+  box-shadow: 0 0 14px rgba(226, 196, 145, 0.28);
   opacity: 0.82;
 }
 
 .footer-tagline {
   font-size: 11px;
-  color: var(--c-dourado);
+  color: #e2c491;
   text-transform: uppercase;
   letter-spacing: 0.22em;
   opacity: 0.9;
@@ -1062,7 +1165,7 @@ p {
 
 .footer-col h4 {
   margin-bottom: 24px;
-  color: var(--c-dourado);
+  color: #e2c491;
   font-size: 11px;
   letter-spacing: 0.2em;
 }
@@ -1088,7 +1191,8 @@ p {
 .footer-icon {
   width: 18px;
   height: 18px;
-  color: var(--c-dourado);
+  color: #e2c491;
+  filter: drop-shadow(0 0 8px rgba(226, 196, 145, 0.18));
   flex: 0 0 18px;
   margin-top: 3px;
 }
@@ -1101,7 +1205,7 @@ p {
 
 .footer-contato-col a:hover,
 .footer-social a:hover {
-  color: var(--c-dourado-soft);
+  color: #f0d8aa;
 }
 
 .footer-social li {
@@ -1114,7 +1218,7 @@ p {
   align-items: center;
   gap: 12px;
   padding: 13px 15px;
-  border: 1px solid rgba(168, 137, 92, 0.28);
+  border: 1px solid rgba(226, 196, 145, 0.32);
   border-radius: var(--radius-btn);
   background-color: rgba(245, 237, 230, 0.035);
   font-size: 14px;
@@ -1122,8 +1226,9 @@ p {
 }
 
 .footer-social-link:hover {
-  border-color: rgba(168, 137, 92, 0.7);
-  background-color: rgba(168, 137, 92, 0.08);
+  border-color: rgba(226, 196, 145, 0.78);
+  background-color: rgba(226, 196, 145, 0.1);
+  box-shadow: 0 0 18px rgba(226, 196, 145, 0.1);
   transform: translateY(-2px);
 }
 
@@ -1134,7 +1239,7 @@ p {
 .footer-bottom {
   position: relative;
   z-index: 1;
-  border-top: 1px solid rgba(168, 137, 92, 0.24);
+  border-top: 1px solid rgba(226, 196, 145, 0.28);
   padding: 20px 24px 24px;
   text-align: center;
   max-width: var(--container);
@@ -1143,9 +1248,10 @@ p {
 
 .footer-bottom p {
   font-size: 11px;
-  color: #f5ede6;
-  opacity: 0.5;
+  color: #fff7ed;
+  opacity: 0.78;
   letter-spacing: 0.04em;
+  text-shadow: 0 0 12px rgba(226, 196, 145, 0.18);
 }
 
 
@@ -1235,7 +1341,6 @@ p {
   width: 60px;
 }
 
-.selo-icon,
 .dif-icon,
 .contato-icon,
 .depo-aspas {
@@ -1364,6 +1469,29 @@ button:focus-visible {
     aspect-ratio: 4 / 3;
     max-height: none;
     border-radius: 4px 40px 4px 40px;
+  }
+
+  .selos {
+    margin-top: 34px;
+    padding-top: 30px;
+  }
+
+  .selo {
+    padding: 0 12px;
+  }
+
+  .selo-value {
+    font-size: 30px;
+  }
+
+  .selo-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .selo-stars svg {
+    width: 9px;
+    height: 9px;
   }
 
   /* Procedimentos */

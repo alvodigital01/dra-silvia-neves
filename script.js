@@ -107,7 +107,7 @@
     setRevealGroup('.section-divider', 'reveal-line', 0.12, 0);
     setRevealGroup('.proc-card', '', 0, 0.1);
     setRevealGroup('.diferencial-item', '', 0, 0.1);
-    setRevealGroup('.dif-icon, .selo-icon, .contato-icon', 'reveal-scale', 0.08, 0.04);
+    setRevealGroup('.dif-icon, .contato-icon', 'reveal-scale', 0.08, 0.04);
     setReveal(document.querySelector('.sobre-image'), 'reveal-photo', 0);
     setRevealGroup('.resultado-item', '', 0, 0.1);
     setRevealGroup('.depo-card', '', 0, 0.1);
