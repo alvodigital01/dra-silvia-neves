@@ -1144,9 +1144,11 @@ p {
   margin: 0 auto;
 }
 
-.footer-brand img {
-  height: 76px;
-  width: auto;
+.footer-brand img,
+.footer-logo-img {
+  width: 400px;
+  height: auto;
+  display: block;
   margin-bottom: 22px;
 }
 
@@ -1843,6 +1845,11 @@ button:focus-visible {
 
   .footer-brand {
     grid-column: auto;
+  }
+
+  .footer-logo-img {
+    width: 260px;
+    margin-bottom: 10px;
   }
 
   /* WhatsApp float */
