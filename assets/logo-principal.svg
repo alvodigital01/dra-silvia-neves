@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240" width="600" height="240">
+  <text x="300" y="130" text-anchor="middle"
+        font-family="'Instrument Serif', 'Cormorant Garamond', Georgia, serif"
+        font-size="68" font-style="italic" fill="#2A1F1A" font-weight="400">Dra. Silvia Neves</text>
+  <line x1="240" y1="160" x2="360" y2="160" stroke="#A8895C" stroke-width="0.8"/>
+  <text x="300" y="195" text-anchor="middle"
+        font-family="'Lora', Georgia, serif"
+        font-size="18" font-style="italic" fill="#5C2E2E">estética avançada</text>
+</svg>

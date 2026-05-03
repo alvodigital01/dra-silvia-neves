@@ -1,11 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 140" width="640" height="140">
-  <g transform="translate(85,70) scale(0.55)" fill="none" stroke="#5C2E2E" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M -40,-50 C -65,-58 -90,-45 -90,-22 C -90,0 -65,8 -45,12 C -20,18 5,25 5,48 C 5,68 -25,75 -52,68"/>
-    <path d="M 12,55 L 12,-55"/>
-    <path d="M 12,-55 L 70,55"/>
-    <path d="M 70,-55 L 70,55"/>
-    <path d="M 70,-55 C 82,-62 92,-55 94,-42"/>
-  </g>
-  <text x="170" y="78" font-family="Italiana, 'Playfair Display', serif" font-size="44" fill="#2A1F1A" font-weight="400">Dra. Silvia Neves</text>
-  <text x="170" y="102" font-family="Lora, Georgia, serif" font-size="14" fill="#5C2E2E" font-style="italic">estética avançada</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 140" width="800" height="140">
+  <line x1="40" y1="25" x2="40" y2="115" stroke="#A8895C" stroke-width="1"/>
+  <text x="60" y="78"
+        font-family="'Instrument Serif', 'Cormorant Garamond', Georgia, serif"
+        font-size="50" font-style="italic" fill="#2A1F1A" font-weight="400">Dra. Silvia Neves</text>
+  <text x="60" y="105"
+        font-family="'Lora', Georgia, serif"
+        font-size="14" font-style="italic" fill="#5C2E2E">estética avançada</text>
 </svg>

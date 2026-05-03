@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <rect width="1024" height="1024" fill="#5C2E2E"/>
+  <text x="512" y="700" text-anchor="middle"
+        font-family="'Instrument Serif', 'Cormorant Garamond', Georgia, serif"
+        font-size="640" font-style="italic" fill="#F4ECE4" font-weight="400">SN</text>
+</svg>
