@@ -174,10 +174,9 @@
 
   /* ── 7. CARROSSEL DE DEPOIMENTOS ─────────────────────────── */
   var track     = document.getElementById('carouselTrack');
-  var cards     = track ? track.querySelectorAll('.depo-card') : [];
+  var cards     = track ? Array.prototype.slice.call(track.querySelectorAll('.depo-card')) : [];
   var prevBtn   = document.getElementById('prevBtn');
   var nextBtn   = document.getElementById('nextBtn');
-  var dots      = document.querySelectorAll('.dot');
 
   if (!track || cards.length === 0) return;
 
@@ -185,9 +184,12 @@
   var currentIndex  = 0;
   var autoTimer     = null;
   var INTERVAL_MS   = 6000;
+  var controls = document.querySelector('.carousel-controls');
+  var dotsWrap = document.querySelector('.carousel-dots');
+  var dots = [];
 
   function isMobile() {
-    return window.innerWidth <= 640;
+    return window.innerWidth <= 768;
   }
 
   function isTablet() {
@@ -195,23 +197,46 @@
   }
 
   function getGap() {
-    if (isMobile()) return 16;
-    if (isTablet()) return 20;
-    return 24;
+    return parseFloat(window.getComputedStyle(WRAPPER).getPropertyValue('--carousel-gap')) || 24;
   }
 
   function getVisibleCount() {
-    if (isMobile()) return 1;
-    if (isTablet()) return 2;
-    return 3;
+    return parseInt(window.getComputedStyle(WRAPPER).getPropertyValue('--carousel-visible'), 10) || 3;
+  }
+
+  function getPageCount() {
+    return Math.ceil(cards.length / getVisibleCount());
   }
 
   function getMaxIndex() {
-    return Math.max(0, cards.length - getVisibleCount());
+    return Math.max(0, getPageCount() - 1);
   }
 
-  var controls = document.querySelector('.carousel-controls');
-  var dotsWrap = document.querySelector('.carousel-dots');
+  function getStartIndex(pageIndex) {
+    var visible = getVisibleCount();
+    var lastStart = Math.max(0, cards.length - visible);
+    return Math.min(pageIndex * visible, lastStart);
+  }
+
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    for (var i = 0; i < getPageCount(); i++) {
+      var dot = document.createElement('button');
+      var first = i * getVisibleCount() + 1;
+      var last = Math.min(first + getVisibleCount() - 1, cards.length);
+      dot.className = 'dot';
+      dot.type = 'button';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      dot.setAttribute('aria-label', 'Depoimentos ' + first + ' a ' + last);
+      dotsWrap.appendChild(dot);
+    }
+    dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.dot'));
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { goTo(i); startAutoplay(); });
+    });
+  }
 
   // Calcula e aplica largura real dos cards com base no wrapper
   function setCardWidths() {
@@ -221,6 +246,7 @@
     var cardW     = Math.floor(available / visible);
     cards.forEach(function (card) {
       card.style.width = cardW + 'px';
+      card.style.flexBasis = cardW + 'px';
     });
   }
 
@@ -239,7 +265,7 @@
   function goTo(index) {
     var max = getMaxIndex();
     currentIndex = Math.max(0, Math.min(index, max));
-    track.style.transform = 'translateX(-' + (currentIndex * getCardWidth()) + 'px)';
+    track.style.transform = 'translateX(-' + (getStartIndex(currentIndex) * getCardWidth()) + 'px)';
 
     dots.forEach(function (dot, i) {
       var active = i === currentIndex;
@@ -271,10 +297,6 @@
   // Controles
   if (prevBtn) prevBtn.addEventListener('click', function () { prevSlide(); startAutoplay(); });
   if (nextBtn) nextBtn.addEventListener('click', function () { nextSlide(); startAutoplay(); });
-
-  dots.forEach(function (dot, i) {
-    dot.addEventListener('click', function () { goTo(i); startAutoplay(); });
-  });
 
   // Pausa ao passar o mouse
   track.addEventListener('mouseenter', stopAutoplay);
@@ -320,6 +342,7 @@
     resizeTimer = setTimeout(function () {
       track.style.transition = 'none';
       setCardWidths();
+      buildDots();
       updateControls();
       goTo(0);
       requestAnimationFrame(function () {
@@ -330,6 +353,7 @@
 
   // Inicializa
   setCardWidths();
+  buildDots();
   updateControls();
   goTo(0);
   startAutoplay();
