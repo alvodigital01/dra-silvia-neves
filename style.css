@@ -512,9 +512,7 @@ p {
 .sobre-img-placeholder {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3.55;
-  max-height: 500px;
-  height: auto;
+  height: clamp(560px, 50vw, 660px);
   background-color: var(--c-rose);
   border-radius: 4px 60px 4px 60px;
   object-fit: cover;
@@ -529,8 +527,8 @@ p {
 
 .sobre-content > p {
   color: var(--c-text-soft);
-  font-size: 16px;
-  line-height: 1.85;
+  font-size: 17px;
+  line-height: 1.9;
 }
 
 .selos {
@@ -1680,6 +1678,7 @@ button:focus-visible {
 
   .sobre-img-placeholder {
     aspect-ratio: 4 / 3;
+    height: auto;
     max-height: none;
     border-radius: 4px 40px 4px 40px;
   }
@@ -1709,7 +1708,7 @@ button:focus-visible {
 
   /* Procedimentos */
   .section-procedimentos { padding: var(--section-py-mob) 0; }
-  .procedimentos-grid { grid-template-columns: 1fr; }
+  .procedimentos-grid { display: block; }
 
   .proc-card {
     grid-column: auto;
@@ -1872,6 +1871,111 @@ button:focus-visible {
     font-size: 20px;
   }
 }
+
+/* ── 19. PROC ACCORDION (grupos — mobile) ─────────────────── */
+
+/* Desktop: grupos transparentes ao grid */
+@media (min-width: 769px) {
+  .proc-group        { display: contents; }
+  .proc-group-header { display: none; }
+  .proc-group-cards  { display: contents; }
+}
+
+/* Mobile: accordion estilo FAQ */
+@media (max-width: 768px) {
+  .proc-group {
+    border-top: 1px solid var(--c-border);
+  }
+
+  .proc-group:last-child {
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .proc-group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 0;
+    background: transparent;
+    cursor: pointer;
+    gap: 12px;
+    font-family: var(--font-body);
+    transition: color 0.25s ease;
+  }
+
+  .proc-group-header:hover .proc-group-label {
+    color: var(--c-bordo);
+  }
+
+  .proc-group-label {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--c-grafite);
+    flex: 1;
+    text-align: left;
+    line-height: 1.25;
+    transition: color 0.25s ease;
+  }
+
+  .proc-group-count {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--c-dourado);
+    white-space: nowrap;
+  }
+
+  .proc-group-toggle {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .proc-group-toggle::before,
+  .proc-group-toggle::after {
+    content: '';
+    position: absolute;
+    background: var(--c-dourado);
+    transition: transform 0.35s ease, opacity 0.25s ease;
+  }
+
+  .proc-group-toggle::before {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    transform: translateY(-50%);
+  }
+
+  .proc-group-toggle::after {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1.5px;
+    transform: translateX(-50%);
+  }
+
+  .proc-group-header[aria-expanded="true"] .proc-group-toggle::after {
+    transform: translateX(-50%) rotate(90deg);
+    opacity: 0;
+  }
+
+  .proc-group-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+
+  .proc-group-cards.is-closed {
+    display: none;
+  }
+}
+
 
 /* ── Small mobile (≤375px) ────────────────────────────────── */
 @media (max-width: 375px) {

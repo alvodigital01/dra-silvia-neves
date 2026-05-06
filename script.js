@@ -148,7 +148,30 @@
   }
 
 
-  /* ── 6. CARROSSEL DE DEPOIMENTOS ─────────────────────────── */
+  /* ── 6. ACCORDION DE PROCEDIMENTOS (mobile) ─────────────── */
+  document.querySelectorAll('.proc-group-header').forEach(function (btn) {
+    var panel = btn.nextElementSibling;
+
+    btn.addEventListener('click', function () {
+      var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        panel.classList.add('is-closed');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        panel.classList.remove('is-closed');
+        btn.setAttribute('aria-expanded', 'true');
+        panel.querySelectorAll('.fade-up, .reveal').forEach(function (el) {
+          if (!el.classList.contains('is-visible')) {
+            requestAnimationFrame(function () { el.classList.add('is-visible'); });
+          }
+        });
+      }
+    });
+  });
+
+
+  /* ── 7. CARROSSEL DE DEPOIMENTOS ─────────────────────────── */
   var track     = document.getElementById('carouselTrack');
   var cards     = track ? track.querySelectorAll('.depo-card') : [];
   var prevBtn   = document.getElementById('prevBtn');
