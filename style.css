@@ -970,6 +970,10 @@ p {
   color: #9C7A4A;
 }
 
+.resultados-swipe-hint {
+  display: none;
+}
+
 @keyframes resultados-marquee {
   from {
     transform: translateX(calc(-50% - 11px));
@@ -1942,6 +1946,25 @@ button:focus-visible {
 
   /* Resultados */
   .section-resultados { padding: var(--section-py-mob) 0; }
+
+  .resultados-swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--c-dourado);
+    opacity: 0.85;
+    margin-bottom: 14px;
+  }
+
+  .resultados-swipe-hint svg {
+    color: var(--c-dourado);
+    display: inline-block;
+  }
 
   .resultados-marquee {
     overflow-x: auto;
