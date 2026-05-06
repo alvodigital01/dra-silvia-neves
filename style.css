@@ -518,7 +518,7 @@ p {
   background-color: var(--c-rose);
   border-radius: 4px 60px 4px 60px;
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
   position: relative;
   overflow: hidden;
 }
