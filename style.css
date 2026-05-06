@@ -1943,19 +1943,40 @@ button:focus-visible {
   /* Resultados */
   .section-resultados { padding: var(--section-py-mob) 0; }
 
+  .resultados-marquee {
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-padding-inline: 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .resultados-marquee::-webkit-scrollbar {
+    display: none;
+  }
+
   .resultados-marquee::before,
   .resultados-marquee::after {
-    width: 54px;
+    display: none;
   }
 
   .resultados-track {
     gap: 16px;
-    padding-inline: 16px;
-    animation-duration: 40s;
+    width: max-content;
+    padding: 8px 20px 6px;
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .resultado-item[aria-hidden="true"] {
+    display: none;
   }
 
   .resultado-item {
-    flex-basis: clamp(190px, 68vw, 260px);
+    flex: 0 0 min(78vw, 280px);
+    scroll-snap-align: center;
   }
 
   .resultado-img {
@@ -2196,12 +2217,12 @@ button:focus-visible {
   h1 { font-size: 27px; }
   h2 { font-size: 24px; }
 
-  .resultados-track {
-    animation-duration: 36s;
+  .resultados-marquee {
+    scroll-padding-inline: 16px;
   }
 
   .resultado-item {
-    flex-basis: min(74vw, 238px);
+    flex-basis: min(78vw, 238px);
   }
 
   .hero-btns .btn {

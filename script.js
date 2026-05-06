@@ -109,7 +109,6 @@
     setRevealGroup('.diferencial-item', '', 0, 0.1);
     setRevealGroup('.dif-icon, .contato-icon', 'reveal-scale', 0.08, 0.04);
     setReveal(document.querySelector('.sobre-image'), 'reveal-photo', 0);
-    setRevealGroup('.resultado-item', '', 0, 0.1);
     setRevealGroup('.depo-card', '', 0, 0.1);
     setRevealGroup('.contato-lista li', 'reveal-left', 0, 0.1);
     setReveal(document.querySelector('.contato-mapa'), '', 0);
