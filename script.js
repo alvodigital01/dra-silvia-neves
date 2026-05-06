@@ -118,7 +118,8 @@
     setReveal(document.querySelector('.hero-content .eyebrow'), '', 0.05);
     setReveal(document.querySelector('.hero-content h1'), '', 0.17);
     setReveal(document.querySelector('.hero-text'), '', 0.29);
-    setReveal(document.querySelector('.hero-btns'), '', 0.43);
+    setReveal(document.querySelector('.hero-proof'), '', 0.37);
+    setReveal(document.querySelector('.hero-btns'), '', 0.49);
     setReveal(document.querySelector('.hero-image'), 'reveal-photo', 0.25);
   }
 

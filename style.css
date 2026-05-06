@@ -448,8 +448,46 @@ p {
 .hero-text {
   font-size: 17px;
   color: var(--c-text-soft);
-  margin-bottom: 26px;
+  margin-bottom: 24px;
   line-height: 1.8;
+}
+
+.hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.hero-proof span {
+  flex: 1 1 148px;
+  min-width: 136px;
+  padding: 14px 16px;
+  border-left: 1px solid var(--c-dourado);
+  background-color: rgba(156, 122, 74, 0.08);
+}
+
+.hero-proof strong,
+.hero-proof small {
+  display: block;
+}
+
+.hero-proof strong {
+  color: var(--c-bordo);
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.hero-proof small {
+  margin-top: 6px;
+  color: var(--c-text-soft);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
 }
 
 .hero-btns {
@@ -711,8 +749,8 @@ p {
 
 .diferenciais-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 42px 36px;
 }
 
 .diferencial-item {
@@ -1647,7 +1685,7 @@ button:focus-visible {
     justify-self: center;
     max-width: 100%;
     margin-bottom: 4px;
-    font-size: clamp(38px, 10.4vw, 50px);
+    font-size: clamp(34px, 9.4vw, 46px);
     text-align: center;
   }
 
@@ -1661,6 +1699,19 @@ button:focus-visible {
     line-height: 1.75;
     margin-bottom: 8px;
     text-align: center;
+  }
+
+  .hero-proof {
+    justify-self: center;
+    max-width: 360px;
+    margin-bottom: 8px;
+  }
+
+  .hero-proof span {
+    flex-basis: 100%;
+    text-align: center;
+    border-left: 0;
+    border-top: 1px solid var(--c-dourado);
   }
 
   .section-header h2,
