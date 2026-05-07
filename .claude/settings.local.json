@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(Get-ChildItem \"d:\\\\ESTUDOS\\\\dra-silvia-neves\" -Recurse | Where-Object { $_.Extension -match \"\\\\.\\(png|jpg|jpeg|webp\\)\" } | ForEach-Object { \"$\\($_.Name\\) - $\\([math]::Round\\($_.Length/1KB,1\\)\\) KB\" })"
+      "PowerShell(Get-ChildItem \"d:\\\\ESTUDOS\\\\dra-silvia-neves\" -Recurse | Where-Object { $_.Extension -match \"\\\\.\\(png|jpg|jpeg|webp\\)\" } | ForEach-Object { \"$\\($_.Name\\) - $\\([math]::Round\\($_.Length/1KB,1\\)\\) KB\" })",
+      "Bash(node -e \"const fs=require\\('fs'\\);const css=fs.readFileSync\\('style.css','utf8'\\);const o=\\(css.match\\(/\\\\{/g\\)||[]\\).length;const c=\\(css.match\\(/\\\\}/g\\)||[]\\).length;console.log\\('Abre:',o,'Fecha:',c,'Diff:',o-c\\);\")"
     ]
   }
 }
