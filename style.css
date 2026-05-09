@@ -557,6 +557,7 @@ p {
   object-position: center top;
   position: relative;
   overflow: hidden;
+  filter: contrast(1.10) saturate(1.14) brightness(0.96);
 }
 
 .sobre-content h2 {
