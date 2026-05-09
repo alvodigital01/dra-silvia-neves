@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(\\(Get-Item \"c:\\\\Users\\\\nicolas\\\\Documents\\\\GitHub\\\\dra-silvia-neves\\\\assets\\\\antesdepoispreenchimento.png\"\\).Length)"
+    ]
+  }
+}
