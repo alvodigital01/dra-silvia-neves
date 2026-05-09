@@ -1817,7 +1817,7 @@ button:focus-visible {
     justify-self: center;
     max-width: 100%;
     margin-bottom: 4px;
-    font-size: clamp(34px, 9.4vw, 46px);
+    font-size: clamp(40px, 11vw, 56px);
     text-align: center;
   }
 
@@ -1834,19 +1834,6 @@ button:focus-visible {
   }
 
   .hero-proof {
-    justify-self: center;
-    max-width: 360px;
-    margin-bottom: 8px;
-  }
-
-  .hero-proof span {
-    flex-basis: 100%;
-    text-align: center;
-    border-left: 0;
-    border-top: 1px solid var(--c-dourado);
-  }
-
-  .hero-proof-registry {
     display: none;
   }
 
@@ -1909,6 +1896,12 @@ button:focus-visible {
     padding-right: 0;
     font-size: 24px;
     text-align: center;
+  }
+
+  .proc-card::after {
+    font-size: 26px;
+    top: 16px;
+    right: 16px;
   }
 
   .proc-card p {
