@@ -737,7 +737,6 @@ p {
   background-color: var(--c-bordo);
 }
 
-
 /* ── 10. DIFERENCIAIS ─────────────────────────────────────── */
 .section-diferenciais {
   background-color: var(--c-nude);
@@ -949,6 +948,24 @@ p {
 
 .resultado-item:hover .resultado-caption {
   color: var(--c-bordo);
+}
+
+.resultado-video {
+  display: block;
+  width: 100%;
+  height: clamp(280px, 31vw, 420px);
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(168, 137, 92, 0.22);
+  box-shadow: 0 12px 34px rgba(92, 46, 46, 0.08);
+  object-fit: cover;
+  object-position: center;
+  background-color: var(--c-rose);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.resultado-item:hover .resultado-video {
+  border-color: rgba(168, 137, 92, 0.56);
+  box-shadow: 0 20px 44px rgba(92, 46, 46, 0.16);
 }
 
 .resultados-disclaimer {
