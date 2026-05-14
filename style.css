@@ -1994,7 +1994,11 @@ button:focus-visible {
   }
 
   .resultado-img {
-    height: 300px;
+    height: 360px;
+  }
+
+  .resultado-video {
+    height: 360px;
   }
 
   .resultado-caption {
