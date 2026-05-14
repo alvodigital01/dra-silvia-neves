@@ -9,6 +9,13 @@ const imagens = [
   { src: 'assets/resultado-harmonizacao-facial.png',   dest: 'assets/resultado-harmonizacao-facial.webp',   width: 600 },
   { src: 'assets/resultado-botox.png',                 dest: 'assets/resultado-botox.webp',                 width: 600 },
   { src: 'assets/resultado-lipo-papada.png',           dest: 'assets/resultado-lipo-papada.webp',           width: 600 },
+  { src: 'assets/1.png',                               dest: 'assets/1.webp',                               width: 800, quality: 85 },
+  { src: 'assets/2.png',                               dest: 'assets/2.webp',                               width: 800, quality: 85 },
+  { src: 'assets/3.png',                               dest: 'assets/3.webp',                               width: 800, quality: 85 },
+  { src: 'assets/4.png',                               dest: 'assets/4.webp',                               width: 800, quality: 85 },
+  { src: 'assets/5.png',                               dest: 'assets/5.webp',                               width: 800, quality: 85 },
+  { src: 'assets/6.png',                               dest: 'assets/6.webp',                               width: 800, quality: 85 },
+  { src: 'assets/7.png',                               dest: 'assets/7.webp',                               width: 800, quality: 85 },
 ];
 
 async function converter() {
@@ -25,7 +32,7 @@ async function converter() {
 
     await sharp(srcPath)
       .resize({ width: img.width, withoutEnlargement: true })
-      .webp({ quality: 82 })
+      .webp({ quality: img.quality ?? 82 })
       .toFile(destPath);
 
     const depoisKB = Math.round(fs.statSync(destPath).size / 1024);
