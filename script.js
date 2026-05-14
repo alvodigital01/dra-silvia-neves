@@ -359,3 +359,27 @@
 
 
 })();
+
+
+/* ── VÍDEOS DE RESULTADOS — autoplay no mobile ────────────── */
+(function () {
+  var videos = document.querySelectorAll('.resultado-video');
+  if (!videos.length) return;
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) {
+          v.play().catch(function () {});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    videos.forEach(function (v) { obs.observe(v); });
+  } else {
+    videos.forEach(function (v) { v.play().catch(function () {}); });
+  }
+})();
